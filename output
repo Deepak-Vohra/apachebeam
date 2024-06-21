@@ -1,0 +1,725 @@
+root@785f91ac53d1:/go/apachebeam# wordcount -input input.txt -output counts
+2024/06/21 02:42:10 INFO Serving JobManagement endpoint=localhost:44751
+2024/06/21 02:42:10 starting Loopback server at 127.0.0.1:37787
+2024/06/21 02:42:10 components: <
+  transforms: <
+    key: "e1"
+    value: <
+      unique_name: "textio.Read/Impulse"
+      spec: <
+        urn: "beam:transform:impulse:v1"
+      >
+      outputs: <
+        key: "i0"
+        value: "n1"
+      >
+    >
+  >
+  transforms: <
+    key: "e10"
+    value: <
+      unique_name: "main.formatFn"
+      spec: <
+        urn: "beam:transform:pardo:v1"
+        payload: "\n\252\001\n\031beam:go:transform:dofn:v1\032\214\001ChliZWFtOmdvOnRyYW5zZm9ybTpkb2ZuOnYxEkoKIQofCg1tYWluLmZvcm1hdEZuEg4IFiICCAwiAggCKgIIDBIWCAESEgoECBlACxIECgIIDBIECgIIAhoGCgQKAggMIgVQYXJEbw=="
+      >
+      inputs: <
+        key: "i0"
+        value: "n9"
+      >
+      outputs: <
+        key: "i0"
+        value: "n10"
+      >
+      environment_id: "go"
+    >
+  >
+  transforms: <
+    key: "e11"
+    value: <
+      unique_name: "textio.Write/beam.addFixedKeyFn"
+      spec: <
+        urn: "beam:transform:pardo:v1"
+        payload: "\n\356\001\n\031beam:go:transform:dofn:v1\032\320\001ChliZWFtOmdvOnRyYW5zZm9ybTpkb2ZuOnYxEn0KUApOCjhnaXRodWIuY29tL2FwYWNoZS9iZWFtL3Nka3MvdjIvZ28vcGtnL2JlYW0uYWRkRml4ZWRLZXlGbhISCBYiBAgZQA8qAggCKgQIGUAPEgoIARIGCgQIGUAPGhYKFAoECBlACxIECgIIAhIGCgQIGUAPIgVQYXJEbw=="
+      >
+      inputs: <
+        key: "i0"
+        value: "n10"
+      >
+      outputs: <
+        key: "i0"
+        value: "n11"
+      >
+      environment_id: "go"
+    >
+  >
+  transforms: <
+    key: "e12"
+    value: <
+      unique_name: "textio.Write/CoGBK"
+      spec: <
+        urn: "beam:transform:group_by_key:v1"
+      >
+      inputs: <
+        key: "i0"
+        value: "n11"
+      >
+      outputs: <
+        key: "i0"
+        value: "n12"
+      >
+    >
+  >
+  transforms: <
+    key: "e13"
+    value: <
+      unique_name: "textio.Write/textio.writeFileFn"
+      spec: <
+        urn: "beam:transform:pardo:v1"
+        payload: "\n\366\001\n\031beam:go:transform:dofn:v1\032\330\001ChliZWFtOmdvOnRyYW5zZm9ybTpkb2ZuOnYxEoIBCmESSAgYEkQIGkpAZ2l0aHViLmNvbS9hcGFjaGUvYmVhbS9zZGtzL3YyL2dvL3BrZy9iZWFtL2lvL3RleHRpby53cml0ZUZpbGVGbhoVeyJmaWxlbmFtZSI6ImNvdW50cyJ9EhYIARISCgQIGUANEgQKAggCEgQKAggMIgVQYXJEbw=="
+      >
+      inputs: <
+        key: "i0"
+        value: "n12"
+      >
+      environment_id: "go"
+    >
+  >
+  transforms: <
+    key: "e2"
+    value: <
+      unique_name: "textio.Read/beam.createFn"
+      spec: <
+        urn: "beam:transform:pardo:v1"
+        payload: "\n\202\002\n\031beam:go:transform:dofn:v1\032\344\001ChliZWFtOmdvOnRyYW5zZm9ybTpkb2ZuOnYxEo0BCmwSOwgYEjcIGkozZ2l0aHViLmNvbS9hcGFjaGUvYmVhbS9zZGtzL3YyL2dvL3BrZy9iZWFtLmNyZWF0ZUZuGi17InZhbHVlcyI6WyJDV2x1Y0hWMExuUjRkQT09Il0sInR5cGUiOiJDQXc9In0SDAgBEggKBggUEgIICBoICgYKBAgZQA8iBVBhckRv"
+      >
+      inputs: <
+        key: "i0"
+        value: "n1"
+      >
+      outputs: <
+        key: "i0"
+        value: "n2"
+      >
+      environment_id: "go"
+    >
+  >
+  transforms: <
+    key: "e3"
+    value: <
+      unique_name: "textio.Read/fileio.MatchAll/fileio.matchFn"
+      spec: <
+        urn: "beam:transform:pardo:v1"
+        payload: "\n\276\002\n\031beam:go:transform:dofn:v1\032\240\002ChliZWFtOmdvOnRyYW5zZm9ybTpkb2ZuOnYxEroBClwSRAgYEkAIGko8Z2l0aHViLmNvbS9hcGFjaGUvYmVhbS9zZGtzL3YyL2dvL3BrZy9iZWFtL2lvL2ZpbGVpby5tYXRjaEZuGhR7IkVtcHR5VHJlYXRtZW50IjowfRIICAESBAoCCAwaSQpHCkUIGkpBZ2l0aHViLmNvbS9hcGFjaGUvYmVhbS9zZGtzL3YyL2dvL3BrZy9iZWFtL2lvL2ZpbGVpby5GaWxlTWV0YWRhdGEiBVBhckRv"
+      >
+      inputs: <
+        key: "i0"
+        value: "n2"
+      >
+      outputs: <
+        key: "i0"
+        value: "n3"
+      >
+      environment_id: "go"
+    >
+  >
+  transforms: <
+    key: "e4"
+    value: <
+      unique_name: "textio.Read/fileio.ReadMatches/fileio.readFn"
+      spec: <
+        urn: "beam:transform:pardo:v1"
+        payload: "\n\262\003\n\031beam:go:transform:dofn:v1\032\224\003ChliZWFtOmdvOnRyYW5zZm9ybTpkb2ZuOnYxEpACCm8SQwgYEj8IGko7Z2l0aHViLmNvbS9hcGFjaGUvYmVhbS9zZGtzL3YyL2dvL3BrZy9iZWFtL2lvL2ZpbGVpby5yZWFkRm4aKHsiQ29tcHJlc3Npb24iOjAsIkRpcmVjdG9yeVRyZWF0bWVudCI6MH0SSwgBEkcKRQgaSkFnaXRodWIuY29tL2FwYWNoZS9iZWFtL3Nka3MvdjIvZ28vcGtnL2JlYW0vaW8vZmlsZWlvLkZpbGVNZXRhZGF0YRpJCkcKRQgaSkFnaXRodWIuY29tL2FwYWNoZS9iZWFtL3Nka3MvdjIvZ28vcGtnL2JlYW0vaW8vZmlsZWlvLlJlYWRhYmxlRmlsZSIFUGFyRG8="
+      >
+      inputs: <
+        key: "i0"
+        value: "n3"
+      >
+      outputs: <
+        key: "i0"
+        value: "n4"
+      >
+      environment_id: "go"
+    >
+  >
+  transforms: <
+    key: "e5"
+    value: <
+      unique_name: "textio.Read/textio.readFn"
+      spec: <
+        urn: "beam:transform:pardo:v1"
+        payload: "\n\246\002\n\031beam:go:transform:dofn:v1\032\210\002ChliZWFtOmdvOnRyYW5zZm9ybTpkb2ZuOnYxEqcBCkkSQwgYEj8IGko7Z2l0aHViLmNvbS9hcGFjaGUvYmVhbS9zZGtzL3YyL2dvL3BrZy9iZWFtL2lvL3RleHRpby5yZWFkRm4aAnt9EksIARJHCkUIGkpBZ2l0aHViLmNvbS9hcGFjaGUvYmVhbS9zZGtzL3YyL2dvL3BrZy9iZWFtL2lvL2ZpbGVpby5SZWFkYWJsZUZpbGUaBgoECgIIDCIFUGFyRG8=:\003c10"
+      >
+      inputs: <
+        key: "i0"
+        value: "n4"
+      >
+      outputs: <
+        key: "i0"
+        value: "n5"
+      >
+      environment_id: "go"
+    >
+  >
+  transforms: <
+    key: "e6"
+    value: <
+      unique_name: "CountWords/main.extractFn"
+      spec: <
+        urn: "beam:transform:pardo:v1"
+        payload: "\n\252\001\n\031beam:go:transform:dofn:v1\032\214\001ChliZWFtOmdvOnRyYW5zZm9ybTpkb2ZuOnYxEkoKLxIWCBgSEggaSg5tYWluLmV4dHJhY3RGbhoVeyJzbWFsbFdvcmRMZW5ndGgiOjl9EggIARIECgIIDBoGCgQKAggMIgVQYXJEbw=="
+      >
+      inputs: <
+        key: "i0"
+        value: "n5"
+      >
+      outputs: <
+        key: "i0"
+        value: "n6"
+      >
+      environment_id: "go"
+    >
+  >
+  transforms: <
+    key: "e7"
+    value: <
+      unique_name: "CountWords/stats.Count/stats.keyedCountFn"
+      spec: <
+        urn: "beam:transform:pardo:v1"
+        payload: "\n\202\002\n\031beam:go:transform:dofn:v1\032\344\001ChliZWFtOmdvOnRyYW5zZm9ybTpkb2ZuOnYxEo0BCmAKXgpIZ2l0aHViLmNvbS9hcGFjaGUvYmVhbS9zZGtzL3YyL2dvL3BrZy9iZWFtL3RyYW5zZm9ybXMvc3RhdHMua2V5ZWRDb3VudEZuEhIIFiIECBlADyoECBlADyoCCAISCggBEgYKBAgZQA8aFgoUCgQIGUALEgYKBAgZQA8SBAoCCAIiBVBhckRv"
+      >
+      inputs: <
+        key: "i0"
+        value: "n6"
+      >
+      outputs: <
+        key: "i0"
+        value: "n7"
+      >
+      environment_id: "go"
+    >
+  >
+  transforms: <
+    key: "e8"
+    value: <
+      unique_name: "CountWords/stats.Count/stats.SumPerKey/CombinePerKey/CoGBK"
+      spec: <
+        urn: "beam:transform:group_by_key:v1"
+      >
+      inputs: <
+        key: "i0"
+        value: "n7"
+      >
+      outputs: <
+        key: "i0"
+        value: "n8"
+      >
+    >
+  >
+  transforms: <
+    key: "e9"
+    value: <
+      unique_name: "CountWords/stats.Count/stats.SumPerKey/CombinePerKey/stats.sumIntFn"
+      spec: <
+        urn: "beam:transform:pardo:v1"
+        payload: "\n\366\001\n\031beam:go:transform:dofn:v1\032\330\001ChliZWFtOmdvOnRyYW5zZm9ybTpkb2ZuOnYxEoMBClgKVgpEZ2l0aHViLmNvbS9hcGFjaGUvYmVhbS9zZGtzL3YyL2dvL3BrZy9iZWFtL3RyYW5zZm9ybXMvc3RhdHMuc3VtSW50Rm4SDggWIgIIAiICCAIqAggCEggIARIECgIIAhoUChIKBAgZQAsSBAoCCAwSBAoCCAIiB0NvbWJpbmU="
+      >
+      inputs: <
+        key: "i0"
+        value: "n8"
+      >
+      outputs: <
+        key: "i0"
+        value: "n9"
+      >
+      environment_id: "go"
+    >
+  >
+  transforms: <
+    key: "s1"
+    value: <
+      unique_name: "textio.Read"
+      subtransforms: "e1"
+      subtransforms: "e2"
+      subtransforms: "s2"
+      subtransforms: "s3"
+      subtransforms: "e5"
+      outputs: <
+        key: "n2"
+        value: "n2"
+      >
+      outputs: <
+        key: "n3"
+        value: "n3"
+      >
+      outputs: <
+        key: "n5"
+        value: "n5"
+      >
+      environment_id: "go"
+    >
+  >
+  transforms: <
+    key: "s2"
+    value: <
+      unique_name: "textio.Read/fileio.MatchAll"
+      subtransforms: "e3"
+      inputs: <
+        key: "n2"
+        value: "n2"
+      >
+      outputs: <
+        key: "n3"
+        value: "n3"
+      >
+      environment_id: "go"
+    >
+  >
+  transforms: <
+    key: "s3"
+    value: <
+      unique_name: "textio.Read/fileio.ReadMatches"
+      subtransforms: "e4"
+      inputs: <
+        key: "n3"
+        value: "n3"
+      >
+      outputs: <
+        key: "n4"
+        value: "n4"
+      >
+      environment_id: "go"
+    >
+  >
+  transforms: <
+    key: "s4"
+    value: <
+      unique_name: "CountWords"
+      subtransforms: "e6"
+      subtransforms: "s5"
+      inputs: <
+        key: "n5"
+        value: "n5"
+      >
+      outputs: <
+        key: "n6"
+        value: "n6"
+      >
+      outputs: <
+        key: "n7"
+        value: "n7"
+      >
+      outputs: <
+        key: "n9"
+        value: "n9"
+      >
+      environment_id: "go"
+    >
+  >
+  transforms: <
+    key: "s5"
+    value: <
+      unique_name: "CountWords/stats.Count"
+      subtransforms: "e7"
+      subtransforms: "s6"
+      inputs: <
+        key: "n6"
+        value: "n6"
+      >
+      outputs: <
+        key: "n7"
+        value: "n7"
+      >
+      outputs: <
+        key: "n9"
+        value: "n9"
+      >
+      environment_id: "go"
+    >
+  >
+  transforms: <
+    key: "s6"
+    value: <
+      unique_name: "CountWords/stats.Count/stats.SumPerKey"
+      subtransforms: "s7"
+      inputs: <
+        key: "n7"
+        value: "n7"
+      >
+      outputs: <
+        key: "n9"
+        value: "n9"
+      >
+      environment_id: "go"
+    >
+  >
+  transforms: <
+    key: "s7"
+    value: <
+      unique_name: "CountWords/stats.Count/stats.SumPerKey/CombinePerKey"
+      spec: <
+        urn: "beam:transform:combine_per_key:v1"
+        payload: "\n\366\001\n\031beam:go:transform:dofn:v1\032\330\001ChliZWFtOmdvOnRyYW5zZm9ybTpkb2ZuOnYxEoMBClgKVgpEZ2l0aHViLmNvbS9hcGFjaGUvYmVhbS9zZGtzL3YyL2dvL3BrZy9iZWFtL3RyYW5zZm9ybXMvc3RhdHMuc3VtSW50Rm4SDggWIgIIAiICCAIqAggCEggIARIECgIIAhoUChIKBAgZQAsSBAoCCAwSBAoCCAIiB0NvbWJpbmU=\022\002c2"
+      >
+      subtransforms: "e8"
+      subtransforms: "e9"
+      inputs: <
+        key: "n7"
+        value: "n7"
+      >
+      outputs: <
+        key: "n9"
+        value: "n9"
+      >
+      environment_id: "go"
+    >
+  >
+  transforms: <
+    key: "s8"
+    value: <
+      unique_name: "textio.Write"
+      subtransforms: "e11"
+      subtransforms: "e12"
+      subtransforms: "e13"
+      inputs: <
+        key: "n10"
+        value: "n10"
+      >
+      environment_id: "go"
+    >
+  >
+  pcollections: <
+    key: "n1"
+    value: <
+      unique_name: "n1"
+      coder_id: "c5"
+      is_bounded: BOUNDED
+      windowing_strategy_id: "w0"
+    >
+  >
+  pcollections: <
+    key: "n10"
+    value: <
+      unique_name: "n10"
+      coder_id: "c0"
+      is_bounded: BOUNDED
+      windowing_strategy_id: "w0"
+    >
+  >
+  pcollections: <
+    key: "n11"
+    value: <
+      unique_name: "n11"
+      coder_id: "c14"
+      is_bounded: BOUNDED
+      windowing_strategy_id: "w0"
+    >
+  >
+  pcollections: <
+    key: "n12"
+    value: <
+      unique_name: "n12"
+      coder_id: "c16"
+      is_bounded: BOUNDED
+      windowing_strategy_id: "w0"
+    >
+  >
+  pcollections: <
+    key: "n2"
+    value: <
+      unique_name: "n2"
+      coder_id: "c0"
+      is_bounded: BOUNDED
+      windowing_strategy_id: "w0"
+    >
+  >
+  pcollections: <
+    key: "n3"
+    value: <
+      unique_name: "n3"
+      coder_id: "c11"
+      is_bounded: BOUNDED
+      windowing_strategy_id: "w0"
+    >
+  >
+  pcollections: <
+    key: "n4"
+    value: <
+      unique_name: "n4"
+      coder_id: "c6"
+      is_bounded: BOUNDED
+      windowing_strategy_id: "w0"
+    >
+  >
+  pcollections: <
+    key: "n5"
+    value: <
+      unique_name: "n5"
+      coder_id: "c0"
+      is_bounded: BOUNDED
+      windowing_strategy_id: "w0"
+    >
+  >
+  pcollections: <
+    key: "n6"
+    value: <
+      unique_name: "n6"
+      coder_id: "c0"
+      is_bounded: BOUNDED
+      windowing_strategy_id: "w0"
+    >
+  >
+  pcollections: <
+    key: "n7"
+    value: <
+      unique_name: "n7"
+      coder_id: "c3"
+      is_bounded: BOUNDED
+      windowing_strategy_id: "w0"
+    >
+  >
+  pcollections: <
+    key: "n8"
+    value: <
+      unique_name: "n8"
+      coder_id: "c13"
+      is_bounded: BOUNDED
+      windowing_strategy_id: "w0"
+    >
+  >
+  pcollections: <
+    key: "n9"
+    value: <
+      unique_name: "n9"
+      coder_id: "c3"
+      is_bounded: BOUNDED
+      windowing_strategy_id: "w0"
+    >
+  >
+  windowing_strategies: <
+    key: "w0"
+    value: <
+      window_fn: <
+        urn: "beam:window_fn:global_windows:v1"
+      >
+      merge_status: NON_MERGING
+      window_coder_id: "c4"
+      trigger: <
+        default: <
+        >
+      >
+      accumulation_mode: DISCARDING
+      output_time: END_OF_WINDOW
+      closing_behavior: EMIT_IF_NONEMPTY
+      on_time_behavior: FIRE_IF_NONEMPTY
+      environment_id: "go"
+    >
+  >
+  coders: <
+    key: "c0"
+    value: <
+      spec: <
+        urn: "beam:coder:string_utf8:v1"
+      >
+    >
+  >
+  coders: <
+    key: "c1"
+    value: <
+      spec: <
+        urn: "beam:go:coder:custom:v1"
+        payload: "Cgd2YXJpbnR6EgIIAhpdCklnaXRodWIuY29tL2FwYWNoZS9iZWFtL3Nka3MvdjIvZ28vcGtnL2JlYW0vY29yZS9ydW50aW1lL2NvZGVyeC5lbmNWYXJJbnRaEhAIFiIECBlADyoGCBQSAggIImkKSWdpdGh1Yi5jb20vYXBhY2hlL2JlYW0vc2Rrcy92Mi9nby9wa2cvYmVhbS9jb3JlL3J1bnRpbWUvY29kZXJ4LmRlY1ZhckludFoSHAgWIgQIGUADIgYIFBICCAgqBAgZQA8qBAgZQAE="
+      >
+    >
+  >
+  coders: <
+    key: "c10"
+    value: <
+      spec: <
+        urn: "beam:coder:kv:v1"
+      >
+      component_coder_ids: "c8"
+      component_coder_ids: "c9"
+    >
+  >
+  coders: <
+    key: "c11"
+    value: <
+      spec: <
+        urn: "beam:coder:row:v1"
+        payload: "\n\n\n\004Path\032\002\020\007\n\n\n\004Size\032\002\020\004\n`\n\014LastModified\032P:N\n\ttime.Time\032A2?\n=\n\025\n\017EncodedBeamData\032\002\020\007\022$8ff84098-820d-4dcb-8dae-c3e675194b92\022$0677429d-e87e-4279-91c2-f951a1f042e4"
+      >
+    >
+  >
+  coders: <
+    key: "c12"
+    value: <
+      spec: <
+        urn: "beam:coder:iterable:v1"
+      >
+      component_coder_ids: "c2"
+    >
+  >
+  coders: <
+    key: "c13"
+    value: <
+      spec: <
+        urn: "beam:coder:kv:v1"
+      >
+      component_coder_ids: "c0"
+      component_coder_ids: "c12"
+    >
+  >
+  coders: <
+    key: "c14"
+    value: <
+      spec: <
+        urn: "beam:coder:kv:v1"
+      >
+      component_coder_ids: "c2"
+      component_coder_ids: "c0"
+    >
+  >
+  coders: <
+    key: "c15"
+    value: <
+      spec: <
+        urn: "beam:coder:iterable:v1"
+      >
+      component_coder_ids: "c0"
+    >
+  >
+  coders: <
+    key: "c16"
+    value: <
+      spec: <
+        urn: "beam:coder:kv:v1"
+      >
+      component_coder_ids: "c2"
+      component_coder_ids: "c15"
+    >
+  >
+  coders: <
+    key: "c2"
+    value: <
+      spec: <
+        urn: "beam:coder:length_prefix:v1"
+      >
+      component_coder_ids: "c1"
+    >
+  >
+  coders: <
+    key: "c3"
+    value: <
+      spec: <
+        urn: "beam:coder:kv:v1"
+      >
+      component_coder_ids: "c0"
+      component_coder_ids: "c2"
+    >
+  >
+  coders: <
+    key: "c4"
+    value: <
+      spec: <
+        urn: "beam:coder:global_window:v1"
+      >
+    >
+  >
+  coders: <
+    key: "c5"
+    value: <
+      spec: <
+        urn: "beam:coder:bytes:v1"
+      >
+    >
+  >
+  coders: <
+    key: "c6"
+    value: <
+      spec: <
+        urn: "beam:coder:row:v1"
+        payload: "\n\263\001\n\010Metadata\032\246\0012\243\001\n\240\001\n\n\n\004Path\032\002\020\007\n\n\n\004Size\032\002\020\004\n`\n\014LastModified\032P:N\n\ttime.Time\032A2?\n=\n\025\n\017EncodedBeamData\032\002\020\007\022$8ff84098-820d-4dcb-8dae-c3e675194b92\022$0677429d-e87e-4279-91c2-f951a1f042e4\n6\n\013Compression\032':%\n\026fileio.compressionType\032\013:\t\n\003int\032\002\020\004\022$75c11406-0aff-4e3b-91a6-47be440ffd71"
+      >
+    >
+  >
+  coders: <
+    key: "c7"
+    value: <
+      spec: <
+        urn: "beam:go:coder:custom:v1"
+        payload: "ChdvZmZzZXRyYW5nZS5SZXN0cmljdGlvbhJTCBpKT2dpdGh1Yi5jb20vYXBhY2hlL2JlYW0vc2Rrcy92Mi9nby9wa2cvYmVhbS9pby9ydHJhY2tlcnMvb2Zmc2V0cmFuZ2UuUmVzdHJpY3Rpb24atAEKS2dpdGh1Yi5jb20vYXBhY2hlL2JlYW0vc2Rrcy92Mi9nby9wa2cvYmVhbS9pby9ydHJhY2tlcnMvb2Zmc2V0cmFuZ2UucmVzdEVuYxJlCBYiUwgaSk9naXRodWIuY29tL2FwYWNoZS9iZWFtL3Nka3MvdjIvZ28vcGtnL2JlYW0vaW8vcnRyYWNrZXJzL29mZnNldHJhbmdlLlJlc3RyaWN0aW9uKgYIFBICCAgqBAgZQAEitAEKS2dpdGh1Yi5jb20vYXBhY2hlL2JlYW0vc2Rrcy92Mi9nby9wa2cvYmVhbS9pby9ydHJhY2tlcnMvb2Zmc2V0cmFuZ2UucmVzdERlYxJlCBYiBggUEgIICCpTCBpKT2dpdGh1Yi5jb20vYXBhY2hlL2JlYW0vc2Rrcy92Mi9nby9wa2cvYmVhbS9pby9ydHJhY2tlcnMvb2Zmc2V0cmFuZ2UuUmVzdHJpY3Rpb24qBAgZQAE="
+      >
+    >
+  >
+  coders: <
+    key: "c8"
+    value: <
+      spec: <
+        urn: "beam:coder:length_prefix:v1"
+      >
+      component_coder_ids: "c7"
+    >
+  >
+  coders: <
+    key: "c9"
+    value: <
+      spec: <
+        urn: "beam:coder:bool:v1"
+      >
+    >
+  >
+  environments: <
+    key: "go"
+    value: <
+      urn: "beam:env:external:v1"
+      payload: "\n\021\n\017localhost:37787"
+      capabilities: "beam:protocol:progress_reporting:v1"
+      capabilities: "beam:protocol:multi_core_bundle_processing:v1"
+      capabilities: "beam:transform:sdf_truncate_sized_restrictions:v1"
+      capabilities: "beam:protocol:worker_status:v1"
+      capabilities: "beam:protocol:monitoring_info_short_ids:v1"
+      capabilities: "beam:version:sdk_base:go:apache/beam_go_sdk:2.56.0"
+      capabilities: "beam:transform:to_string:v1"
+      capabilities: "beam:protocol:data_sampling:v1"
+      capabilities: "beam:coder:bytes:v1"
+      capabilities: "beam:coder:bool:v1"
+      capabilities: "beam:coder:varint:v1"
+      capabilities: "beam:coder:double:v1"
+      capabilities: "beam:coder:string_utf8:v1"
+      capabilities: "beam:coder:length_prefix:v1"
+      capabilities: "beam:coder:kv:v1"
+      capabilities: "beam:coder:iterable:v1"
+      capabilities: "beam:coder:state_backed_iterable:v1"
+      capabilities: "beam:coder:windowed_value:v1"
+      capabilities: "beam:coder:global_window:v1"
+      capabilities: "beam:coder:interval_window:v1"
+      capabilities: "beam:coder:row:v1"
+      capabilities: "beam:coder:nullable:v1"
+      capabilities: "beam:coder:timer:v1"
+      dependencies: <
+        type_urn: "beam:artifact:type:file:v1"
+        role_urn: "beam:artifact:role:go_worker_binary:v1"
+      >
+    >
+  >
+>
+root_transform_ids: "s1"
+root_transform_ids: "s4"
+root_transform_ids: "e10"
+root_transform_ids: "s8"
+requirements: "beam:requirement:pardo:splittable_dofn:v1"
+2024/06/21 02:42:10 Prepared job with id: job-001 and staging token: job-001
+2024/06/21 02:42:10 Staged binary artifact with token: job-001
+2024/06/21 02:42:10 Submitted job: job-001
+2024/06/21 02:42:10  (): starting job-001[go-job-1-1718937730040912096]
+2024/06/21 02:42:10  (): running job-001[go-job-1-1718937730040912096]
+2024/06/21 02:42:10 Job[job-001] state: RUNNING
+2024/06/21 02:42:10 starting worker job-001[go-job-1-1718937730040912096]_go
+2024/06/21 02:42:10 INFO Reading from input.txt source=/go/pkg/mod/github.com/apache/beam/sdks/v2@v2.56.0/go/pkg/beam/io/textio/textio.go:226 time=2024-06-21T02:42:10.064Z worker.ID=job-001[go-job-1-1718937730040912096]_go worker.endpoint=localhost:42413
+2024/06/21 02:42:10 INFO Writing to counts source=/go/pkg/mod/github.com/apache/beam/sdks/v2@v2.56.0/go/pkg/beam/io/textio/textio.go:343 time=2024-06-21T02:42:10.071Z worker.ID=job-001[go-job-1-1718937730040912096]_go worker.endpoint=localhost:42413
+2024/06/21 02:42:10 INFO  (): pipeline completed job-001[go-job-1-1718937730040912096] source=/go/pkg/mod/github.com/apache/beam/sdks/v2@v2.56.0/go/pkg/beam/runners/universal/runnerlib/execute.go:109 time=2024-06-21T02:42:10.072Z worker.ID=job-001[go-job-1-1718937730040912096]_go worker.endpoint=localhost:42413
+2024/06/21 02:42:10 INFO  (): terminating job-001[go-job-1-1718937730040912096] source=/go/pkg/mod/github.com/apache/beam/sdks/v2@v2.56.0/go/pkg/beam/runners/universal/runnerlib/execute.go:109 time=2024-06-21T02:42:10.072Z worker.ID=job-001[go-job-1-1718937730040912096]_go worker.endpoint=localhost:42413
+2024/06/21 02:42:10 INFO Job[job-001] state: DONE source=/go/pkg/mod/github.com/apache/beam/sdks/v2@v2.56.0/go/pkg/beam/runners/universal/runnerlib/job.go:126 time=2024-06-21T02:42:10.072Z worker.ID=job-001[go-job-1-1718937730040912096]_go worker.endpoint=localhost:42413
+2024/06/21 02:42:10 INFO stopping worker job-001[go-job-1-1718937730040912096]_go source=/go/pkg/mod/github.com/apache/beam/sdks/v2@v2.56.0/go/pkg/beam/runners/universal/extworker/extworker.go:117 time=2024-06-21T02:42:10.072Z worker.ID=job-001[go-job-1-1718937730040912096]_go worker.endpoint=localhost:42413
+root@785f91ac53d1:/go/apachebeam# 
